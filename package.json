@@ -1,0 +1,14 @@
+{
+  "name": "my-data-medical",
+  "scripts": {
+    "codegen": "graph codegen --output-dir=src/abis/ subgraph.yaml",
+    "build": "graph build subgraph.yaml",
+    "build-ipfs": "graph build --ipfs /ip4/127.0.0.1/tcp/5001 subgraph.yaml",
+    "build-wast": "graph build -t wast subgraph.yaml",
+    "deploy": "graph deploy subgraph.yaml --watch --verbosity debug --node http://35.192.232.199:8020 --ipfs /ip4/35.239.68.192/tcp/5001 --subgraph-name my-data-medical"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.3.2",
+    "@graphprotocol/graph-ts": "^0.3.3"
+  }
+}

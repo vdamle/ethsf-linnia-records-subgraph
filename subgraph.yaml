@@ -1,0 +1,42 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+- kind: ethereum/contract
+  name: LinniaPermissions
+  source:
+    address: "0x5d9E3f7958cB121C80389d78932816441cCd7C92"
+    abi: LinniaPermissions
+  mapping:
+    kind: ethereum/events
+    apiVersion: 0.0.1
+    language: wasm/assemblyscript
+    entities:
+    - Permissions
+    abis:
+    - name: LinniaPermissions
+      file: ./abis/LinniaPermissions.json
+    eventHandlers:
+    - event: LinniaAccessGranted(bytes32,address,address)
+      handler: handleAccessGranted
+    file: ./src/permissions.ts
+- kind: ethereum/contract
+  name: LinniaRecords
+  source:
+    address: "0x281c33F7BFFd77e87990f1cA719B476d323d53Fe"
+    abi: LinniaRecords
+  mapping:
+    kind: ethereum/events
+    apiVersion: 0.0.1
+    language: wasm/assemblyscript
+    entities:
+    - Records
+    abis:
+    - name: LinniaRecords
+      file: ./abis/LinniaRecords.json
+    eventHandlers:
+    - event: LinniaRecordAdded(bytes32,address,string)
+      handler: handleRecordAdded
+    - event: LinniaRecordSigAdded(bytes32,address,uint)
+      handler: handleRecordSigAdded
+    file: ./src/records.ts

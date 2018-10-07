@@ -1,0 +1,12 @@
+type Permission @entity {
+  datahash: ID!
+  owner: Bytes!
+  viewer: Bytes!
+}
+
+type Record @entity {
+  datahash: ID!
+  owner: Bytes!
+  metadata: String!
+  irisscore: BigInt!
+}
